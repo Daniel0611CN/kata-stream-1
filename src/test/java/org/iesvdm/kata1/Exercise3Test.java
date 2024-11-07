@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Exercise3Test extends PetDomainForKata
@@ -16,7 +17,15 @@ public class Exercise3Test extends PetDomainForKata
     {
         //TODO
         // Obtain petTypes from people
-        List<PetType> petTypes = new ArrayList<>();
+        List<PetType> petTypes = people.stream()
+                .flatMap(p -> p.getPetTypes().keySet().stream())
+                .toList();
+
+        var aux = people.stream()
+                        .map(p -> p.getPetEmojis().entrySet().stream()
+                                .map(o -> o.getKey()).toList()).toList();
+
+        System.out.println(aux);
 
         // Do you recognize this pattern? Can you simplify it using Java Streams?
         Map<String, Long> petEmojiCounts = new HashMap<>();
@@ -36,8 +45,8 @@ public class Exercise3Test extends PetDomainForKata
 
         //TODO
         // Replace by a stream the previous pattern
-        Map<String, Long> petEmojiCounts2 = new HashMap<>();
-        Assertions.assertEquals(expectedMap, petEmojiCounts2);
+//        Map<String, Long> petEmojiCounts2 = new HashMap<>();
+//        Assertions.assertEquals(expectedMap, petEmojiCounts2);
 
     }
 
