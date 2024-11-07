@@ -18,11 +18,12 @@ public class Exercise2Test extends PetDomainForKata
     {
         //TODO
         // replace null with a Predicate lambda which checks for PetType.CAT
-        Predicate<Person> predicate = p -> false;
+        Predicate<Person> predicate = p -> p.hasPet(PetType.CAT);
 
         //TODO
         // replace false by a check in a stream of people
-        Assertions.assertTrue(false);
+//        Assertions.assertTrue(people.stream().anyMatch(p -> predicate.test(p)));
+        Assertions.assertTrue(people.stream().anyMatch(predicate));
     }
 
     @Test
