@@ -24,7 +24,6 @@ public class Exercise2Test extends PetDomainForKata
 
         //TODO
         // replace false by a check in a stream of people
-//        Assertions.assertTrue(people.stream().anyMatch(p -> predicate.test(p)));
         Assertions.assertTrue(people.stream().anyMatch(predicate));
     }
 
